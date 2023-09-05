@@ -1,0 +1,16 @@
+<form (ngSubmit)="login()">
+  <div class="container-fluid">
+    <label for="duname">User name:</label>
+     <input type="text" class="form-control" [(ngModel)]="duname" id="duname" name="duname ">
+     <label for="dpw">Password: </label>
+     <input type="password" class="form-control" [(ngModel)]="dpw" id="dpw" name="dpw"><br/>
+  <button class="btn btn-primary" type="submit">Login</button><br/><br/>
+  </div>
+</form>
+  <div *ngIf="errorMessage">{{errorMessage}}</div> 
+  <form (click)="navigatetoregister()"> 
+    <div>
+  <span>Don't have an account? 
+    <a routerLink="/register">signUp</a></span>
+  </div>
+</form>

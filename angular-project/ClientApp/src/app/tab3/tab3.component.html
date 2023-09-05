@@ -1,0 +1,25 @@
+<h3 style="color:rgb(217, 43, 8)">Search your suitable jobs</h3><div>
+  <label for="skills">Skills:</label>
+  <input type="text" id="skills" [(ngModel)]="filterOptions.skills">
+
+  <label for="experience">Experience Level:</label>
+  <select id="experience" [(ngModel)]="filterOptions.experienceLevel">
+    <option value="">Any Experience Level</option>
+    <option value="entry">Entry Level</option>
+    <option value="intermediate">Intermediate Level</option>
+    <option value="senior">Senior Level</option>
+  </select>
+
+  <label for="location">Location:</label>
+  <input type="text" id="location" [(ngModel)]="filterOptions.location">
+
+  <button (click)="applyFilters()">Apply Filters</button>
+</div>
+
+<div  class="box" *ngFor="let job of filteredJobs">
+  <h5 style="background-color: aqua;">Company Name: {{job.company}}</h5>
+  <p>Job Title: {{ job.title }}</p>
+  <p>Location: {{ job.location }}</p>
+  <p>Skills: {{ job.skills.join(', ') }}</p>
+  <p>Experience Level: {{ job.experienceLevel }}</p>
+</div>

@@ -1,0 +1,53 @@
+<h3 style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;color:rgb(225, 135, 25) ;">Create your Resume</h3>
+<form (ngSubmit)="submitForm()" #userForm="ngForm">
+    <div class="box">
+    <h5>Personal Details:</h5>
+    <label for="name">Name:</label>
+    <input class="form-control" type="text" id="name" name="name" [(ngModel)]="userdata.name" required>
+  
+    <label for="age">Age:</label>
+    <input class="form-control" type="number" id="age" name="age" [(ngModel)]="userdata.age" required>
+  
+    <label for="email">Email:</label>
+    <input class="form-control" type="email" id="email" name="email" [(ngModel)]="userdata.email" required>
+  
+    <label for="address">Address:</label>
+    <textarea class="form-control" id="address" name="address" [(ngModel)]="userdata.address" required></textarea>
+    </div>
+    <div class="box">
+    <h5>Education Details:</h5>
+        <div *ngFor="let education of userdata.educationDetails; let i = index" class="education-entry">
+            <label>School Name:</label>
+            <input class="form-control" type="text" name="schoolName{{i}}" [(ngModel)]="education.schoolName" required>
+            <label>Start Year:</label>
+            <input class="form-control" type="number" name="startYear{{i}}" [(ngModel)]="education.startYear" required>
+
+            <label>End Year:</label>
+            <input class="form-control" type="number" name="endYear{{i}}" [(ngModel)]="education.endYear" required>
+            <label>Grade:</label>
+            <input class="form-control" type="number" name="grade{{i}}" [(ngModel)]="education.grade" required>
+
+            <button type="button" (click)="removeEducation(i)">Remove Education</button>
+        </div>
+        <button type="button" (click)="addEducation()">Add Education</button>
+        </div>
+        <div class="box">
+            <h5>Projects:</h5>
+            <div *ngFor="let project of userdata.projects; let i=index">
+                <label>Project Name:</label>
+                <input class="form-control" type="text" name="projectname{{i}}" [(ngModel)]="project.projectname" required>
+                <label>Description:</label>
+                <input class="form-control" type="text" name="Description{{i}}" [(ngModel)]="project.description" required>
+                <label>skills used:</label>
+                <input class="form-control" type="text" name="skills{{i}}" [(ngModel)]="project.skills" required>
+                <button type="button" (click)="removeproject(i)">Remove project</button>
+            </div>
+            <button type="button" (click)="addproject()">Add project</button>
+        </div>   
+        <div class="box">
+            <h5>Hobbies:</h5>
+            <input class="form-control" type="text" name="hobbies" [(ngModel)]="userdata.hobbies" required>
+        </div>
+    <button class="btn btn-primary" type="submit">Submit</button>
+  </form>
+  
